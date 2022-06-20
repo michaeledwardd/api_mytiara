@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('returan', function (Blueprint $table) {
             $table->id('id_returan');
-            $table->unsignedBigInteger('id_barang')->index();
+            $table->string('id_barang')->index();
             $table->string('kendala_barang');
             $table->string('status_returan');
             $table->date('tgl_diambil');

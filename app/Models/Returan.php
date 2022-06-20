@@ -29,4 +29,8 @@ class Returan extends Model
             return Carbon::parse($this->attributes['updated_at'])->format('Y-m-d H:i:s');
         }
     }
+
+    public function Barang(){
+        return $this->belongsTo(Barang::class, 'id_barang', 'id_barang');
+    }
 }
