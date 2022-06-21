@@ -10,7 +10,7 @@ use App\Models\Jenis;
 
 class JenisController extends Controller
 {
-    //Method untuk menampilkan semua data product (READ)
+    //Method untuk menampilkan semua data jenis (READ)
     public function index(){
         $jenis = Jenis::all(); //Mengambil semua data jenis
 
@@ -67,9 +67,9 @@ class JenisController extends Controller
         ], 200); //Return message data jenis baru dalam bentuk JSON
     }
 
-    //Method untuk menghapus 1 data product (DELETE)
+    //Method untuk menghapus 1 data jenis (DELETE)
     public function destroy($id_jenis){
-        $Jenis = Jenis::find($id_jenis); //Mencari data product berdasarkan id
+        $Jenis = Jenis::find($id_jenis); //Mencari data jenis berdasarkan id
 
         if(is_null($Jenis)){
             return response([
