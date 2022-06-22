@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\PegawaiController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\ReturanController;
 use App\Http\Controllers\Api\BarangController;
+use App\Http\Controllers\Api\PengirimanController;
+use App\Http\Controllers\Api\TransaksiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,11 +54,23 @@ use App\Http\Controllers\Api\BarangController;
     Route::post('/barang', [BarangController::class, 'store']);
     Route::get('/barang/{id_barang}', [BarangController::class, 'show']);
     Route::delete('/barang/{id_barang}', [BarangController::class, 'destroy']);
-    Route::put('/barang/{id_barang}', [BarangController::class, 'update']);
+    Route::post('/barang/{id_barang}', [BarangController::class, 'update']);
+
+    Route::get('/pengiriman', [PengirimanController::class, 'index']);
+    Route::post('/pengiriman', [PengirimanController::class, 'store']);
+    Route::get('/pengiriman/{id_pengiriman}', [PengirimanController::class, 'show']);
+    Route::delete('/pengiriman/{id_pengiriman}', [PengirimanController::class, 'destroy']);
+    Route::put('/pengiriman/{id_pengiriman}', [PengirimanController::class, 'update']);
+
+    Route::get('/transaksi', [TransaksiController::class, 'index']);
+    Route::post('/transaksi', [TransaksiController::class, 'store']);
+    Route::get('/transaksi/{id_transaksi}', [TransaksiController::class, 'show']);
+    Route::delete('/transaksi/{id_transaksi}', [TransaksiController::class, 'destroy']);
+    Route::put('/transaksi/{id_transaksi}', [TransaksiController::class, 'update']);
 
     //kurang transaksi(idbarang,idcustomer,idpegawai) dan pengiriman(idbarang dan idsupplier)
     //tambahan untuk beberapa laporan
-    
+
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });

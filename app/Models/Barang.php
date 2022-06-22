@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Barang extends Model
 {
@@ -12,6 +13,7 @@ class Barang extends Model
     protected $primaryKey = 'id_barang';
     protected $table = 'barang';
     protected $fillable = [
+        'id_barang',
         'id_jenis',
         'nama_barang',
         'harga_pokok',

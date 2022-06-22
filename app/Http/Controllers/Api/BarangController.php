@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Validator;
 use App\Models\Barang;
+use Illuminate\Support\Facades\DB;
 
 class BarangController extends Controller
 {
@@ -74,17 +75,18 @@ class BarangController extends Controller
         $count = DB::table('barang')->count() +1;
         $id_generate = sprintf("%03d", $count);
 
-        $uploadBerkas = $request->upload_berkas->store('img_foto_barang',['disk'=>'public']);
+        $fotoBarang = $request->foto_barang->store('foto_barang',['disk'=>'public']);
 
         $Barang = Barang::create([
             'id_barang'=>'TIARA'.'-'.$id_generate,
+            'id_jenis'=>$request->id_jenis,
             'nama_barang'=>$request->nama_barang,
             'harga_pokok'=>$request->harga_pokok,
             'harga_jual'=>$request->harga_jual,
             'status_tersedia'=>$request->status_tersedia,
             'garansi'=>$request->garansi,
             'durasi_garansi'=>$request->durasi_garansi,
-            'foto_barang'=>$uploadBerkas,
+            'foto_barang'=>$fotoBarang,
             'stok_barang'=>$request->stok_barang,
             'keterangan'=>$request->keterangan,
         ]);
@@ -164,10 +166,10 @@ class BarangController extends Controller
         $Barang->status_tersedia = $updateData['status_tersedia'];
         $Barang->garansi = $updateData['garansi'];
         $Barang->durasi_garansi = $updateData['durasi_garansi'];
-        if(isset($request->upload_berkas))
+        if(isset($request->foto_barang))
         {
-            $uploadBerkas = $request->upload_berkas->store('img_foto_barang',['disk'=>'public']);
-            $Barang->upload_berkas = $uploadBerkas;
+            $fotoBarang = $request->foto_barang->store('foto_barang',['disk'=>'public']);
+            $Barang->foto_barang = $fotoBarang;
         }
         $Barang->keterangan = $updateData['keterangan'];
 
