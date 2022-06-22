@@ -51,7 +51,9 @@ class PegawaiController extends Controller
             'nama_pegawai' => 'required|regex:/^[\pL\s\-]+$/u',
             'jenis_kelamin' => 'required|regex:/^[\pL\s\-]+$/u',
             'role' => 'required||regex:/^[\pL\s\-]+$/u',
-            'kontak_pegawai' => 'required|digits_between:10,13|starts_with:08|numeric'
+            'kontak_pegawai' => 'required|digits_between:10,13|starts_with:08|numeric',
+            'email' => 'required|unique:pegawai|email',
+            'password' => 'required'
         ],
         [
         'nama_pegawai.required' => 'Inputan tidak boleh kosoong',
@@ -64,7 +66,14 @@ class PegawaiController extends Controller
             return response(['message' => $validate->errors()], 400); //Return error invalid input
         }
 
-        $Pegawai = Pegawai::create($storeData);
+        $Pegawai = Pegawai::create([
+            'nama_pegawai'=>$request->nama_pegawai,
+            'jenis_kelamin'=>$request->jenis_kelamin,
+            'role'=>$request->role,
+            'kontak_pegawai'=>$request->kontak_pegawai,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password),
+        ]);
 
         return response([
             'message' => 'Add Pegawai Success',
@@ -112,7 +121,9 @@ class PegawaiController extends Controller
             'nama_pegawai' => 'required|regex:/^[\pL\s\-]+$/u',
             'jenis_kelamin' => 'required|regex:/^[\pL\s\-]+$/u',
             'role' => 'required||regex:/^[\pL\s\-]+$/u',
-            'kontak_pegawai' => 'required|digits_between:10,13|starts_with:08|numeric'
+            'kontak_pegawai' => 'required|digits_between:10,13|starts_with:08|numeric',
+            'email' => 'required|unique:pegawai|email',
+            'password' => 'required'
         ],
         [
         'nama_pegawai.required' => 'Inputan tidak boleh kosoong',
@@ -129,6 +140,8 @@ class PegawaiController extends Controller
         $Pegawai->jenis_kelamin = $updateData['jenis_kelamin'];
         $Pegawai->role = $updateData['role'];
         $Pegawai->kontak_pegawai = $updateData['kontak_pegawai'];
+        $Pegawai->email = $updateData['email'];
+        $Pegawai->password = $updateData['password'];
 
         if($Pegawai->save()){
             return response([

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('jenis_kelamin');
             $table->string('role');
             $table->string('kontak_pegawai');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->timestamps();
         });
     }

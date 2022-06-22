@@ -14,7 +14,9 @@ class Pegawai extends Model
         'nama_pegawai',
         'jenis_kelamin',
         'role',
-        'kontak_pegawai'
+        'kontak_pegawai',
+        'email',
+        'password'
     ];
 
     public function getCreatedAtAttribute(){

@@ -49,7 +49,7 @@ class ReturanController extends Controller
         $validate = Validator::make($storeData, [
             'id_barang' => 'required',
             'kendala_barang' => 'required|regex:/^[\pL\s\-]+$/u',
-            'status_returan' => 'required||regex:/^[\pL\s\-]+$/u',
+            'status_returan' => 'required|regex:/^[\pL\s\-]+$/u',
             'tgl_diambil' => 'required|date_format:Y-m-d'
         ],
         [
@@ -109,7 +109,7 @@ class ReturanController extends Controller
         $validate = Validator::make($updateData, [
             'id_barang' => 'required',
             'kendala_barang' => 'required|regex:/^[\pL\s\-]+$/u',
-            'status_returan' => 'required||regex:/^[\pL\s\-]+$/u',
+            'status_returan' => 'required|regex:/^[\pL\s\-]+$/u',
             'tgl_diambil' => 'required|date_format:Y-m-d'
         ],
         [

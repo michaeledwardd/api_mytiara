@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\PegawaiController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\ReturanController;
+use App\Http\Controllers\Api\BarangController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -46,6 +47,16 @@ use App\Http\Controllers\Api\ReturanController;
     Route::get('/returan/{id_returan}', [ReturanController::class, 'show']);
     Route::delete('/returan/{id_returan}', [ReturanController::class, 'destroy']);
     Route::put('/returan/{id_returan}', [ReturanController::class, 'update']);
+
+    Route::get('/barang', [BarangController::class, 'index']);
+    Route::post('/barang', [BarangController::class, 'store']);
+    Route::get('/barang/{id_barang}', [BarangController::class, 'show']);
+    Route::delete('/barang/{id_barang}', [BarangController::class, 'destroy']);
+    Route::put('/barang/{id_barang}', [BarangController::class, 'update']);
+
+    //kurang transaksi(idbarang,idcustomer,idpegawai) dan pengiriman(idbarang dan idsupplier)
+    //tambahan untuk beberapa laporan
+    
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
