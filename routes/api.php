@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\ReturanController;
 use App\Http\Controllers\Api\BarangController;
 use App\Http\Controllers\Api\PengirimanController;
 use App\Http\Controllers\Api\TransaksiController;
+use App\Http\Controllers\Api\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,6 +21,8 @@ use App\Http\Controllers\Api\TransaksiController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+    Route::post('/login', [AuthController::class, 'login']);
+
     Route::get('/jenis', [JenisController::class, 'index']);
     Route::post('/jenis', [JenisController::class, 'store']);
     Route::get('/jenis/{id_jenis}', [JenisController::class, 'show']);
