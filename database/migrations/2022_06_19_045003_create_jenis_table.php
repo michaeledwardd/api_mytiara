@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('id_jenis');
             $table->string('nama_jenis');
             $table->string('keterangan');
+            $table->string('status');
             $table->timestamps();
         });
     }

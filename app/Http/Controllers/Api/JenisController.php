@@ -49,7 +49,8 @@ class JenisController extends Controller
         $storeData = $request->all(); //Mengambil semua input dari API Client
         $validate = Validator::make($storeData, [
             'nama_jenis' => 'required|regex:/^[\pL\s\-]+$/u',
-            'keterangan' => 'required|regex:/^[\pL\s\-]+$/u'
+            'keterangan' => 'required|regex:/^[\pL\s\-]+$/u',
+            'status' => 'required|regex:/^[\pL\s\-]+$/u'
         ],
         [
         'nama_jenis.regex' => 'Inputan tidak boleh mengandung angka atau simbol lain',
@@ -105,7 +106,8 @@ class JenisController extends Controller
         $updateData = $request->all();
         $validate = Validator::make($updateData, [
             'nama_jenis' => 'required|regex:/^[\pL\s\-]+$/u',
-            'keterangan' => 'required|regex:/^[\pL\s\-]+$/u'
+            'keterangan' => 'required|regex:/^[\pL\s\-]+$/u',
+            'status' => 'required|regex:/^[\pL\s\-]+$/u'
         ],
         [
             'nama_jenis.regex' => 'Inputan tidak boleh mengandung angka atau simbol lain',
@@ -118,6 +120,7 @@ class JenisController extends Controller
 
         $Jenis->nama_jenis = $updateData['nama_jenis']; 
         $Jenis->keterangan = $updateData['keterangan'];
+        $Jenis->status = $updateData['status'];
 
         if($Jenis->save()){
             return response([
