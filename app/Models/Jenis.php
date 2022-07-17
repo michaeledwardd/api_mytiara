@@ -12,7 +12,8 @@ class Jenis extends Model
     protected $table = 'jenis';
     protected $fillable = [
         'nama_jenis',
-        'keterangan'
+        'keterangan',
+        'status'
     ];
 
     public function getCreatedAtAttribute(){
